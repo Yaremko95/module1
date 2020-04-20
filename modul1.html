@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Accessing Elements in the DOM</title>
+
+</head>
+<style>
+    
+   header {
+     
+    border-bottom: 2 px solid #888888;
+     padding: 0 15px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+   }
+   header nav {
+     width: 40%;
+
+   }
+   header ul {
+     display: flex;
+     justify-content: space-around;
+     list-style-type: none;
+     font-size: 14.rem;
+
+   }
+   header div p, h1 {
+     margin: -5px 5px;
+     padding: -5px 5px;
+     font-style: italic;
+   }
+   header a {
+     color: black;
+   }
+   .container, footer {
+     width: 1400px;
+     margin: auto;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     margin-top: 50px;
+   }
+
+   .container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 30%;
+    margin: 10px 0;
+   }
+   form {
+     display: flex;
+     flex-direction: column;
+     width: 130%;
+    
+   }
+   form input {
+     margin: 5px 0;;
+   }
+   .submit {
+     width: 40%;
+     background-color: slategray;
+   }
+   form label {
+     padding-top: 5px;
+   }
+   small {
+     color:red;
+   }
+
+   footer p {
+     padding: 0;
+     margin: 0;
+
+   }
+  </style>
+</head>
+<body>
+  <!-- EXERCISE 11
+      Add a navbar with the links to the sections
+      -->
+​
+  <!-- EXERCISE 3:
+          Write the main title of the barber shop and a smaller claim.
+      -->
+      <header>
+        <div>
+            <h1>Bonefade Barbers</h1>
+            <p>IT'S NOT JUST A CUT.</p>
+            <p>It's a lifestyle.</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#promotion">Out Promotions</a></li>
+                <li><a href="#link">Web page </a></li>
+                <li><a href="#user-data">Schedule appointment</a></li>
+                <li><a href="#service">Services</a></li>
+                <li><a href="#footer">Contact</a></li>
+            </ul>
+        </nav>
+       
+      </header>
+      
+​<div class="container">
+
+      <div class="promotion">
+          <p>A classic preparation shave. 
+            With and against the hair grain to get the smoothest look.
+            Concluded with our facial, and a classic machine hand vibrating massage.
+              (50 minutes)</p>
+      </div>
+        
+      <div class="link">
+        <a href="https://www.bonefadebarbers.com/"></a>
+      </div>
+        
+    ​
+      <div>
+        <form class="user-email">
+              <label for="email">Enter your email:<small>*</small></label>
+              <input id="email" class="email" type="email" required>
+              <input class="submit"type="button" value="Submit" onclick="displayEmail()"> 
+          </form>
+      </div>
+          
+    ​
+    <div>
+      <form class="user-data" >
+              <label for="tel">Enter your phone number: <small>*</small></label>
+              <input class="tel" type="tel" required>
+              <label for="date">Enter date<small>*</small></label>
+              <input class="date" type="date" required>
+              <label for="name">Enter your name</label>
+              <input class="name"type="text">
+              <input class="submit" type="submit" value="Submit" onclick="displayUserData()">
+          </form>
+    </div>
+          
+    ​
+    <div class="service">
+      
+          <table >
+            <tr>
+              <td>$39.00</td>
+              <td>haircut</td>
+            </tr>
+            
+            <tr>
+              <td>$36.58</td>
+              <td>shave</td>
+            </tr>
+            <tr>
+              <td>$21.00</td>
+              <td>beard trim</td>
+            </tr>
+            <tr>
+              <td>$17.00</td>
+              <td>maintanace shape-up</td>
+            </tr>
+        </table>
+        
+
+    </div>
+</div>
+
+ 
+​
+  
+      <footer>
+          <h3>Bonefade Barbers</h3>
+          <p>115 Avenue A
+            New York, NY 10009
+            212-256-0076</p>
+          <p>+14883782059</p>
+          <a>bonefade@gmail.com</a>
+      </footer>
+​
+  <script>
+    window.onload = function () {
+      console.log('Page loaded!')
+
+      let windowHeight= window.innerHeight;
+      let windowWidth = window.innerWidth;
+
+      let pageHeight= document.documentElement.clientHeight;
+      let pageWidth=  document.body.clientHeight;
+
+      console.log("Window height:", windowHeight, "; window width:", windowWidth );
+      console.log("Page height:", pageHeight, "; page width:", pageWidth );
+    }
+    function displayUserData() {
+        let userData ={
+            'phone':document.querySelector(".tel").value,
+            'date':document.querySelector(".date").value,
+            'name':document.querySelector(".name").value
+        }
+
+        console.log(userData);
+    }
+    function displayEmail() {
+        let email=document.querySelector(".email").value
+    
+        if(email=="") {
+            let valid =document.querySelector(".email").style.borderColor="red";
+        }
+        else {
+            let valid=document.querySelector(".email").style.borderColor="blue";
+
+        }
+        console.log(email);
+    }
+     function validation() {
+         let inp = document.querySelectorAll("input")
+
+     }
+  </script>
+
+</body>
+</html>
