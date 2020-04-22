@@ -1,0 +1,86 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>Task List</title>
+    </head>
+    <body>
+        <h1>welcome to yuor personal task list</h1>
+            <br />
+            <span>You can add any new task you like by writing it in a specified field and press "Add new" </span> <br /><br />
+        <input type="text" id="newTask" placeholder="Enter a new task" />
+        <input type="button"  value="Add to the list" onclick="addNewTask()"/>
+        <div class="task-list">
+            <ul id="myTaskList">
+            </ul>
+            <hr />
+            <input type="color"  id="colorPcker"/>
+            <input type="button" value="change background" onclick="changeTaskColor()"/>
+            <hr />
+
+        </div>
+
+        <input type="button" value="Remove first" id="remove-first" onclick="removeFirst()"/>
+        <input type="button" value="Remove last " id="remove-last" onclick="removeLast()" />
+        <input type="button" id="sort" value="sort" onclick="bubbleSort()"/>
+
+
+
+        <script type="text/javascript" >
+
+            function addNewTask() {
+                let Task = document.createElement("LI");
+                let TaskValue=document.getElementById("newTask").value;
+                Task.innerText=TaskValue;
+                let list=document.getElementById("myTaskList");
+                list.appendChild(Task);
+            }
+
+            function removeFirst() {
+                let tasks= document.querySelectorAll('li');
+                tasks[0].remove();
+            }
+             function removeLast () {
+                let tasks= document.querySelectorAll('li');
+                tasks[tasks.length-1].remove();
+             }
+             function getTasksArray() {
+                let tasks= document.querySelectorAll('li');
+                console.log(tasks);
+                return tasks
+             }
+
+             function changeTaskColor() {
+                let color=document.getElementById("colorPcker").value;
+                 let tasks=getTasksArray();
+                 tasks.forEach(element=>{
+                    element.style.backgroundColor=color;
+                 })
+             }
+
+             function bubbleSort() {
+                 let tasks=document.querySelectorAll('li');
+                 let swapp;
+                 let number=tasks.length-1;
+                 do {
+                     swapp=false;
+                     for(let i=0; i< number; i++) {
+                         if(tasks[i].innerHTML.toLocaleLowerCase()<tasks[i+1].innerHTML.toLocaleLowerCase()) {
+                             let temp=tasks[i].innerHTML.toLocaleLowerCase();
+                             tasks[i].innerHTML=tasks[i+1].innerHTML;
+                             tasks[i+1].innerHTML=temp;
+                             swapp=true;
+                         }
+                     }
+                     number--;
+                 } while(swapp)
+               
+             }
+
+             function displaySorted() {
+
+             }
+
+        </script>
+    </body>
+    
+</html>
