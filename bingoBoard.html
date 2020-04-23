@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bingo board</title>
+    </head>
+    <style>
+        #board {
+            display:grid;
+            grid-template-columns: repeat(9, 1fr);
+            width: 30%;
+            margin: auto;
+        }
+        .boardElement {
+            
+        }
+    </style>
+    <body>
+
+    
+<input type="button" onclick="createBoard()" value="generate board"/>
+        <div id="board" >
+
+        </div>
+<input type="button" onclick="heighlight()" value="heighlight"/>
+
+
+
+    </body>
+    <script> type="text/javascript"
+        function random() {
+            const nums = new Set();
+            while(nums.size !== 76) {
+            nums.add(Math.floor(Math.random() * 76) + 1);
+        
+            }
+           
+            return [...nums];
+           
+        }
+
+        function createBoard () {
+            let rand = random();
+            let parent=document.getElementById("board");
+            let arr=[];
+            for (let i=0; i<rand.length; i++) {
+                let element=document.createElement("span");
+               element.className="boardElement";
+                element.innerHTML=rand[i];
+                parent.appendChild(element);
+            }
+           
+           
+        }
+
+        function between() {  
+            return Math.floor(
+            Math.random() * (76 - 1) + 1
+            )
+           
+        }
+         function heighlight () {
+             let rand = between();
+             console.log(rand);
+             let elements = document.querySelectorAll("span");
+             elements.forEach(element => {
+                if( element.innerHTML == rand ){
+                    element.style.color ="red";
+                   
+                }
+             });
+         }
+
+
+
+        
+
+
+
+       
+    </script>
+</html>
